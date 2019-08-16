@@ -1,4 +1,4 @@
-﻿import React, { Component, Fragment } from 'react'
+﻿import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import './NavMenu.css'
@@ -8,20 +8,19 @@ export class NavMenu extends Component {
 
     render() {
         return (
-            <Fragment>
-                <Link to={'/'}>wolven531_website</Link>
-                <nav>
-                    <Link to={'/'} exact>
-                        Home
-                    </Link>
-                    <Link to={'/counter'}>
-                        Counter
-                    </Link>
-                    <Link to={'/fetchdata'}>
-                        Fetch data
-                    </Link>
-                </nav>
-            </Fragment>
+            <nav>
+                <Link to={'/'} exact>
+                    Home
+                </Link>
+                <br />
+                <Link to={'/counter'}>
+                    Counter
+                </Link>
+                <br />
+                <Link to={'/fetchdata'}>
+                    Fetch data
+                </Link>
+            </nav>
         )
     }
 }
