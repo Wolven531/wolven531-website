@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export class FetchData extends Component {
   displayName = FetchData.name
 
   constructor(props) {
-    super(props);
-    this.state = { forecasts: [], loading: true };
+    super(props)
+    this.state = { forecasts: [], loading: true }
 
     fetch('api/SampleData/WeatherForecasts')
       .then(response => response.json())
       .then(data => {
-        this.setState({ forecasts: data, loading: false });
-      });
+        this.setState({ forecasts: data, loading: false })
+      })
   }
 
   static renderForecastsTable(forecasts) {
@@ -36,13 +36,13 @@ export class FetchData extends Component {
           )}
         </tbody>
       </table>
-    );
+    )
   }
 
   render() {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
+      : FetchData.renderForecastsTable(this.state.forecasts)
 
     return (
       <div>
@@ -50,6 +50,6 @@ export class FetchData extends Component {
         <p>This component demonstrates fetching data from the server.</p>
         {contents}
       </div>
-    );
+    )
   }
 }
