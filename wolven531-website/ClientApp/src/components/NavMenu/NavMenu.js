@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom'
 import './NavMenu.css'
 
 export class NavMenu extends Component {
-    displayName = NavMenu.name
-
     render() {
         return (
             <nav>
-                <Link to={'/'} exact>
+                <Link to={'/'} exact={String(true)}>
                     Home
                 </Link>
                 <br />
