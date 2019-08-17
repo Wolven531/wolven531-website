@@ -1,4 +1,10 @@
-body {
+@media (max-width: 767px) {
+    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+    body {
+        padding-top: 50px;
+    }
+}
+/* body {
     background-color: azure;
     display: grid;
     padding: 10px;
@@ -18,4 +24,4 @@ h1 {
     margin: 0 auto;
     text-align: center;
     width: 200px;
-}
+} */
