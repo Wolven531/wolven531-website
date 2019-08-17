@@ -261,3 +261,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/wolven531-website/ClientApp/build
+/wolven531-website/Properties/PublishProfiles/wolven531-website20190815 - Web Deploy.pubxml
