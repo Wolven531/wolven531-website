@@ -6,7 +6,7 @@ import './NavMenu.css'
 export class NavMenu extends Component {
 	render() {
 		return (
-			<nav style={{}}>
+			<nav>
 				<NavLink to="/">Home</NavLink>
 				<NavLink to="/counter">Counter</NavLink>
 				<NavLink to="/fetchdata">Fetch data</NavLink>
