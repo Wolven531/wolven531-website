@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { NavMenu } from './NavMenu/NavMenu'
+import { NavMenu } from '../NavMenu/NavMenu'
 
 import './layout.css'
 
@@ -11,7 +11,9 @@ export class Layout extends Component {
 				<div style={{ gridArea: 'sidebar' }}>
 					<NavMenu />
 				</div>
-				{this.props.children}
+				<div style={{ gridArea: 'main' }}>
+					{this.props.children}
+				</div>
 			</div>
 		)
 	}
