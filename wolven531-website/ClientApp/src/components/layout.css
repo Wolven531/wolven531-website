@@ -4,8 +4,8 @@
 		'sidebar header header header'
 		'sidebar . main main'
 		'sidebar footer footer footer';
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 150px 1fr 1fr 1fr;
 	grid-template-rows: auto;
-	height: 100vh;
-	width: 100vw;
+	height: 97vh;
+	width: 98vw;
 }
