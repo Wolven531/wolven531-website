@@ -8,9 +8,7 @@ export class NavMenu extends Component {
 		return (
 			<nav style={{}}>
 				<NavLink to="/">Home</NavLink>
-				<br/>
 				<NavLink to="/counter">Counter</NavLink>
-				<br/>
 				<NavLink to="/fetchdata">Fetch data</NavLink>
 			</nav>
 		)
