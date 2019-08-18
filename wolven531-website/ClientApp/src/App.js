@@ -4,7 +4,7 @@ import { Route } from 'react-router'
 import { Counter } from './components/Counter'
 import { FetchData } from './components/FetchData'
 import { Home } from './components/Home'
-import { Layout } from './components/Layout'
+import { Layout } from './components/Layout/Layout'
 
 export default class App extends Component {
   render() {
