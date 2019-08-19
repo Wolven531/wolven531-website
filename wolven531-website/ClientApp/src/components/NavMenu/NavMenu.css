@@ -19,8 +19,9 @@ nav a:focus {
 
 nav a:hover {
 	background-color: #4189c7; /* rgb: 65 137 199 */
-	background-color: rgba(65, 137, 199, .85);
-	/* background-color: rgba(255, 255, 255, .8); */
+	background-color: rgba(65, 137, 199, .5);
+	border: 1px solid #fff;
+	box-sizing: content-box;
 }
 
 @media (min-width: 768px) {
