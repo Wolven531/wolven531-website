@@ -7,11 +7,14 @@ import './layout.css'
 export class Layout extends Component {
 	render() {
 		return (
-			<div className="layout">
+			<div id="layout">
+				<div id="header" style={{ gridArea: 'header' }}>
+					<h1>Wolven531</h1>
+				</div>
 				<div style={{ gridArea: 'sidebar' }}>
 					<NavMenu />
 				</div>
-				<div style={{ gridArea: 'main' }}>
+				<div id="mainContent" style={{ gridArea: 'main' }}>
 					{this.props.children}
 				</div>
 			</div>
