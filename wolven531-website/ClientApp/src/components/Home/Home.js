@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './Home.css'
+
 export class Home extends Component {
 	componentDidMount() {
 		window.document.title = 'Home - Wolven531'
