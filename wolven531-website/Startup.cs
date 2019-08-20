@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using wolven531_website.Services;
 
 namespace wolven531_website
 {
@@ -21,6 +23,8 @@ namespace wolven531_website
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.TryAddSingleton<IVisitorService, VisitorService>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
