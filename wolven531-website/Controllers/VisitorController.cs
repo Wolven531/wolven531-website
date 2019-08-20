@@ -9,7 +9,7 @@ using wolven531_website.Services;
 
 namespace wolven531_website.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/visitors")]
     [ApiController]
     public class VisitorController : ControllerBase
     {
@@ -22,11 +22,11 @@ namespace wolven531_website.Controllers
             _logger = logger;
         }
 
-        // GET: api/Visitor
+        // GET: api/visitors
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _visitorService.GetVisitorMap().Keys;
         }
 
         //// GET: api/Visitor/5
