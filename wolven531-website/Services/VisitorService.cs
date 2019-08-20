@@ -20,6 +20,11 @@ namespace wolven531_website.Services
             _logger.LogDebug("Initialized new in-memory visitor map.");
         }
 
+        public IReadOnlyDictionary<string, int> GetVisitorMap()
+        {
+            return visitorToHitCountMap;
+        }
+
         public void RegisterVisitor(string visitorName)
         {
             if (!visitorToHitCountMap.ContainsKey(visitorName))

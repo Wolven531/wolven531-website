@@ -8,5 +8,7 @@ namespace wolven531_website.Services
     public interface IVisitorService
     {
         void RegisterVisitor(string visitorName);
+
+        IReadOnlyDictionary<string, int> GetVisitorMap();
     }
 }
