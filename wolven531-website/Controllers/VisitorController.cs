@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -36,11 +37,13 @@ namespace wolven531_website.Controllers
         //    return "value";
         //}
 
-        //// POST: api/Visitor
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST: api/visitors
+        [HttpPost]
+        public IActionResult Post([FromBody] string visitorName)
+        {
+            _visitorService.RegisterVisitor(visitorName);
+            return StatusCode((int)HttpStatusCode.OK);
+        }
 
         //// PUT: api/Visitor/5
         //[HttpPut("{id}")]
