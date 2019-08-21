@@ -3,7 +3,16 @@ import React, { Component } from 'react'
 class Visitors extends Component {
 	state = {
 		isLoading: true,
+		visitorName: '',
 		visitors: []
+	}
+
+	handleRegistration = () => {
+		this.setState({ visitorName: '' })
+	}
+
+	handleVisitorNameChange = evt => {
+		this.setState({ visitorName: evt.target.value })
 	}
 
 	componentDidMount() {
@@ -30,11 +39,16 @@ class Visitors extends Component {
 	}
 
 	render() {
-		const { isLoading, visitors } = this.state
+		const { isLoading, visitorName, visitors } = this.state
 
 		return (
 			<div>
 				<h2>Visitors</h2>
+				<div>
+					<input type="text" placeholder="Visitor name" onChange={this.handleVisitorNameChange} value={visitorName} />
+					<br/>
+					<button onClick={this.handleRegistration}>Register</button>
+				</div>
 				{isLoading
 					? <p>Loading...</p>
 					: <div>
