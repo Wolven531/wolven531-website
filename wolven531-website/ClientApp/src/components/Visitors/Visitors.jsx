@@ -21,8 +21,9 @@ class Visitors extends Component {
 			// redirect: 'follow', // manual, *follow, error
 			// referrer: 'no-referrer', // no-referrer, *client
 			// body: JSON.stringify({ visitorName: this.state.visitorName }) // body data type must match "Content-Type" header
-			body: '"' + JSON.stringify({ visitorName: this.state.visitorName }).replace(/"/gi, "'") + '"'
 			// body: { visitorName: this.state.visitorName }
+			// body: '"' + JSON.stringify({ visitorName: this.state.visitorName }).replace(/"/gi, "'") + '"'
+			body: `"${this.state.visitorName}"`
 		})
 		.then(resp => {
 			console.log(`posted and got response status = ${resp.status}`)
