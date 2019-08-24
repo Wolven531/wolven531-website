@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using wolven531_website.Services;
 
 namespace wolven531_website.Controllers
@@ -39,9 +40,9 @@ namespace wolven531_website.Controllers
 
         // POST: api/visitors
         [HttpPost]
-        public IActionResult Post([FromBody] string visitorName)
+        public IActionResult Post([FromBody] JObject visitor)
         {
-            _visitorService.RegisterVisitor(visitorName);
+            _visitorService.RegisterVisitor(visitor.GetValue("name").Value<string>());
             return StatusCode((int)HttpStatusCode.OK);
         }
 
