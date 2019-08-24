@@ -13,6 +13,10 @@ class Visitors extends Component {
 		this.init()
 	}
 
+	handleNameChange = evt => {
+		this.setState({ visitorName: evt.target.value })
+	}
+
 	handleRegistration = () => {
 		fetch('api/visitors', {
 			body: JSON.stringify({ name: this.state.visitorName }),
@@ -42,10 +46,6 @@ class Visitors extends Component {
 			})
 	}
 
-	handleVisitorNameChange = evt => {
-		this.setState({ visitorName: evt.target.value })
-	}
-
 	init = () => {
 		fetch('api/visitors')
 			.then(resp => {
@@ -72,7 +72,7 @@ class Visitors extends Component {
 					<input
 						type="text"
 						placeholder="Visitor name"
-						onChange={this.handleVisitorNameChange}
+						onChange={this.handleNameChange}
 						value={visitorName}
 					/>
 					<br />
