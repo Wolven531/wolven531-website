@@ -7,6 +7,12 @@ class Visitors extends Component {
 		visitors: []
 	}
 
+	componentDidMount() {
+		window.document.title = 'Visitors - Wolven531'
+
+		this.init()
+	}
+
 	handleRegistration = () => {
 		fetch('api/visitors', {
 			body: JSON.stringify({ name: this.state.visitorName }),
@@ -40,9 +46,7 @@ class Visitors extends Component {
 		this.setState({ visitorName: evt.target.value })
 	}
 
-	componentDidMount() {
-		window.document.title = 'Visitors - Wolven531'
-
+	init = () => {
 		fetch('api/visitors')
 			.then(resp => {
 				if (resp.status !== 200) {
