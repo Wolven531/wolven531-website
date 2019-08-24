@@ -15,23 +15,25 @@ class Visitors extends Component {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			// mode: 'cors', // no-cors, cors, *same-origin
 			headers: {
-				// 'Content-Type': 'application/json'
 				'Content-Type': 'application/json; charset=utf-8'
-				// 'Content-Type': 'application/x-www-form-urlencoded',
+				// 'Content-Type': 'application/x-www-form-urlencoded'
 			}
 			// redirect: 'follow', // manual, *follow, error
 			// referrer: 'no-referrer', // no-referrer, *client
 		})
-		.then(resp => {
-			console.log(`posted and got response status = ${resp.status}`)
-			return resp.json()
-		})
-		.then(respJson => {
-			console.log('response was', respJson)
-		})
-		.catch(err => {
-			console.error(err)
-		})
+			.then(resp => resp.json())
+			.then(respJson => {
+				if (respJson.error) {
+					throw new Error(`Poorly formatted request. Error:\n\n${respJson.error}`)
+				}
+				this.setState({
+					visitorName: '',
+					visitors: this.state.visitors.concat(this.state.visitorName)
+				})
+			})
+			.catch(err => {
+				alert(err)
+			})
 	}
 
 	handleVisitorNameChange = evt => {
@@ -44,24 +46,15 @@ class Visitors extends Component {
 		fetch('api/visitors')
 			.then(resp => {
 				if (resp.status !== 200) {
-					console.log(
-						`Response status was not 200; instead status=${
-							resp.status
-						}`
-					)
-					return
+					throw new Error(`Response status was not 200; instead status=${resp.status}`)
 				}
-				// console.log(resp)
 				return resp.json() // resp.text()
 			})
-			// .then(respText => {
-			// 	console.log(respText)
-			// })
 			.then(visitors => {
 				this.setState({ isLoading: false, visitors })
 			})
 			.catch(err => {
-				console.error(err)
+				alert(err)
 			})
 	}
 
@@ -81,10 +74,9 @@ class Visitors extends Component {
 					<br />
 					<button onClick={this.handleRegistration}>Register</button>
 				</div>
-				{isLoading ? (
-					<p>Loading...</p>
-				) : (
-					<div>
+				{isLoading
+					? <p>Loading...</p>
+					: <div>
 						<h3>Visitor List ({visitors.length})</h3>
 						<ul>
 							{visitors.map(visitor => (
@@ -92,7 +84,7 @@ class Visitors extends Component {
 							))}
 						</ul>
 					</div>
-				)}
+				}
 			</div>
 		)
 	}
