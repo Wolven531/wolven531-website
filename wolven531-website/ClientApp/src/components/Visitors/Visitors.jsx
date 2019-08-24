@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { Loading } from '../Loading/Loading'
+
 class Visitors extends Component {
 	state = {
 		isLoading: true,
@@ -68,7 +70,7 @@ class Visitors extends Component {
 		return (
 			<div>
 				<h2>Visitors</h2>
-				<div>
+				<div className="visitor-form">
 					<input
 						type="text"
 						placeholder="Visitor name"
@@ -79,8 +81,8 @@ class Visitors extends Component {
 					<button onClick={this.handleRegistration}>Register</button>
 				</div>
 				{isLoading
-					? <p>Loading...</p>
-					: <div>
+					? <Loading />
+					: <div className="visitor-list">
 						<h3>Visitor List ({visitors.length})</h3>
 						<ul>
 							{visitors.map(visitor => (
