@@ -68,7 +68,7 @@ class Visitors extends Component {
 		const { isLoading, visitorName, visitors } = this.state
 
 		return (
-			<div>
+			<div className="visitors">
 				<h2>Visitors</h2>
 				<div className="visitor-form">
 					<input
