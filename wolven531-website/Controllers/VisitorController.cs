@@ -42,8 +42,14 @@ namespace wolven531_website.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] JObject visitor)
         {
+            if (!visitor.ContainsKey("name"))
+            {
+                return StatusCode(
+                    (int)HttpStatusCode.BadRequest,
+                    new JObject { ["error"] = "Must provide a 'name' key and value in object" });
+            }
             _visitorService.RegisterVisitor(visitor.GetValue("name").Value<string>());
-            return StatusCode((int)HttpStatusCode.OK);
+            return StatusCode((int)HttpStatusCode.OK, new JObject { ["success"] = true });
         }
 
         //// PUT: api/Visitor/5
