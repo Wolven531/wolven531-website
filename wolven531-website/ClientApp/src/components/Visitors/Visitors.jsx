@@ -24,7 +24,10 @@ class Visitors extends Component {
 		})
 		.then(resp => {
 			console.log(`posted and got response status = ${resp.status}`)
-			this.setState({ visitorName: '' })
+			return resp.json()
+		})
+		.then(respJson => {
+			console.log('response was', respJson)
 		})
 		.catch(err => {
 			console.error(err)
@@ -85,7 +88,7 @@ class Visitors extends Component {
 						<h3>Visitor List ({visitors.length})</h3>
 						<ul>
 							{visitors.map(visitor => (
-								<li>{visitor}</li>
+								<li key={visitor}>{visitor}</li>
 							))}
 						</ul>
 					</div>
