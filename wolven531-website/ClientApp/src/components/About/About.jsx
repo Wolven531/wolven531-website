@@ -10,7 +10,8 @@ class About extends Component {
 	render() {
 		return (
 			<div className="about">
-				
+				<p>This website is designed using dotnet core (C#), TypeScript, and React</p>
+				<p>&copy; Anthony Williams 2019</p>
 			</div>
 		)
 	}
