@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 
+import { Api } from '../../api'
+
 import { Loading } from '../Loading/Loading'
 import { VisitorList } from '../VisitorList/VisitorList'
 
 class Visitors extends Component {
+	api
 	state = {
 		isLoading: true,
 		visitorName: '',
@@ -50,18 +53,10 @@ class Visitors extends Component {
 	}
 
 	init = () => {
-		fetch('api/visitors')
-			.then(resp => {
-				if (resp.status !== 200) {
-					throw new Error(`Response status was not 200; instead status=${resp.status}`)
-				}
-				return resp.json() // resp.text()
-			})
+		this.api = new Api()
+		this.api.getVisitors()
 			.then(visitors => {
 				this.setState({ isLoading: false, visitors })
-			})
-			.catch(err => {
-				alert(err)
 			})
 	}
 
