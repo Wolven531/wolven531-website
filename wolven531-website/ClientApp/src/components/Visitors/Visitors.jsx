@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { Loading } from '../Loading/Loading'
+import { VisitorList } from '../VisitorList/VisitorList'
 
 class Visitors extends Component {
 	state = {
@@ -82,14 +83,7 @@ class Visitors extends Component {
 				</div>
 				{isLoading
 					? <Loading />
-					: <div className="visitor-list">
-						<h3>Visitor List ({visitors.length})</h3>
-						<ul>
-							{visitors.map(visitor => (
-								<li key={visitor}>{visitor}</li>
-							))}
-						</ul>
-					</div>
+					: <VisitorList visitors={visitors} />
 				}
 			</div>
 		)
