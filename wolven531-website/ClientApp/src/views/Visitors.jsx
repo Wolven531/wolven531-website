@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import { Api } from '../../api'
+import { Api } from '../api'
 
-import { Loading } from '../Loading/Loading'
-import { VisitorList } from '../VisitorList/VisitorList'
+import { Loading } from '../components/Loading/Loading'
+import { VisitorList } from '../components/VisitorList/VisitorList'
 
 class Visitors extends Component {
 	api
