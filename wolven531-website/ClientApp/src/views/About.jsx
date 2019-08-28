@@ -19,6 +19,14 @@ class About extends Component {
 						<td>C#</td>
 						<td>4 of 5</td>
 					</tr>
+					<tr>
+						<td>JavaScript</td>
+						<td>5 of 5</td>
+					</tr>
+					<tr>
+						<td>TypeScript</td>
+						<td>5 of 5</td>
+					</tr>
 				</table>
 				<p>This website is designed using dotnet core (C#), TypeScript, and React</p>
 				<p>&copy; Anthony Williams 2019</p>
