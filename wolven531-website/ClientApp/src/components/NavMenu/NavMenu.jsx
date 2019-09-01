@@ -9,7 +9,6 @@ export class NavMenu extends Component {
 			<nav>
 				<NavLink to="/">Home</NavLink>
 				<NavLink to="/counter">Counter</NavLink>
-				<NavLink to="/fetchdata">Fetch data</NavLink>
 				<NavLink to="/visitors">Visitors</NavLink>
 				<NavLink to="/about">About</NavLink>
 			</nav>
