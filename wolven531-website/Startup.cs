@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -61,6 +62,9 @@ namespace wolven531_website
             app.UseCors();
 
             app.UseAuthentication();
+            // TODO: figure out BASIC authentication
+            //app.UseAuthentication("BasicAuthentcation")
+            //    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
