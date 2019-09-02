@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 using wolven531_website.Services;
 
 namespace wolven531_website
@@ -25,7 +26,9 @@ namespace wolven531_website
         {
             // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllersWithViews()
-                .AddNewtonsoftJson();
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ContractResolver =
+                    new CamelCasePropertyNamesContractResolver());
 
             services.TryAddSingleton<IVisitorService, VisitorService>();
 
