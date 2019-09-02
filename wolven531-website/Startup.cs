@@ -58,6 +58,11 @@ namespace wolven531_website
 
             app.UseRouting();
 
+            app.UseCors();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
