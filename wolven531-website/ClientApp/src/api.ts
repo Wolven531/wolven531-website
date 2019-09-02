@@ -1,5 +1,5 @@
 class Api {
-	addVisitor = visitorName => {
+	public static addVisitor = (visitorName: string) => {
 		return fetch('api/visitors', {
 			body: JSON.stringify({ name: visitorName }),
 			// body: JSON.stringify({ name: this.state.visitorName }),
@@ -26,7 +26,7 @@ class Api {
 			})
 	}
 
-	getVisitors = () => {
+	public static getVisitors = () => {
 		return fetch('api/visitors')
 			.then(resp => {
 				if (resp.status !== 200) {
