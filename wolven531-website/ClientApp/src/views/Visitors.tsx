@@ -12,12 +12,12 @@ interface IVisitorsState {
 }
 
 class Visitors extends Component<{}, IVisitorsState> {
-	private api: Api
+	// private api: Api
 
 	constructor(props: any) {
 		super(props)
 
-		this.api = props.Api || new Api()
+		// this.api = props.Api || new Api()
 		this.state = {
 			isLoading: true,
 			visitorName: '',
@@ -61,7 +61,7 @@ class Visitors extends Component<{}, IVisitorsState> {
 
 	private handleRegistration = () => {
 		const visitorName = this.state.visitorName
-		this.api.addVisitor(visitorName)
+		Api.addVisitor(visitorName)
 			.then(respJson => {
 				this.setState({
 					visitorName: '',
@@ -71,7 +71,7 @@ class Visitors extends Component<{}, IVisitorsState> {
 	}
 
 	private init = () => {
-		this.api.getVisitors()
+		Api.getVisitors()
 			.then(visitors => {
 				this.setState({ isLoading: false, visitors })
 			})
