@@ -24,7 +24,8 @@ namespace wolven531_website
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson();
 
             services.TryAddSingleton<IVisitorService, VisitorService>();
 
