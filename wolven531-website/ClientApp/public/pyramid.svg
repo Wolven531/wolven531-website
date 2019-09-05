@@ -1,0 +1,21 @@
+<svg
+	xmlns:svg="http://www.w3.org/2000/svg"
+	xmlns="http://www.w3.org/2000/svg"
+	width="845"
+	height="640"
+	version="1.0">
+	<g transform="translate(6.624265,7.65362)">
+		<!-- <path style="fill:black;fill-opacity:1;stroke:none;stroke-width:2.48031497;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.1248;stroke-opacity:1" d="M 422.53599,443.12141 L 458.88963,475.35804 L 432.27691,490.72292 L 422.53599,443.12141 z " /> -->
+		<path d="M 324,45 L 313,355 L 31,493" style="fill:none;fill-opacity:1;stroke:black;stroke-width:7.62193441;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.1248;stroke-opacity:1"/>
+		<path d="M 633,418 L 313,356" style="fill:none;fill-opacity:1;stroke:black;stroke-width:7.62193441;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.1248;stroke-opacity:1"/>
+		<!-- <path style="fill:none;fill-opacity:1;stroke:black;stroke-width:7.62193966;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.1248;stroke-opacity:1" d="M 445.47873,482.83073 C 459.76442,505.89531 480.45534,528.70787 507.54935,539.17109 C 532.65681,550.43875 618.45479,557.86314 660.62166,557.64355" /> -->
+		<path d="M 30,493 L 375,605 L 635,418 L 323,44 L 30,493 z " style="fill:white;fill-opacity:0.61176471;stroke:black;stroke-width:7.62193441;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.1248;stroke-opacity:1"/>
+		<path d="M 324,45 L 375,605" style="fill:white;fill-opacity:0.71710528;stroke:black;stroke-width:7.62193441;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.1248;stroke-opacity:1"/>
+		<!-- <text y="49.769833" x="566" style="font-size:49.16752625px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:2.48031497;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.1248;stroke-opacity:1;font-family:Times New Roman" xml:space="preserve"><tspan style="font-size:72px" y="49.769833" x="566.83521" sodipodi:role="line">apex</tspan></text> -->
+		<!-- <g transform="matrix(3.07297,0,0,3.07297,7.685015,-8.999708)" > -->
+			<!-- <path style="opacity:1;fill:black;fill-opacity:1;stroke:none;stroke-width:2.48031497;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.1248;stroke-opacity:1" d="M 120,16 L 135,11 L 135,21 L 120,16 z " /> -->
+			<!-- <path style="opacity:1;fill:none;fill-opacity:1;stroke:black;stroke-width:2.48031497;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.1248;stroke-opacity:1" d="M 135,16 L 175,16" /> -->
+		<!-- </g> -->
+		<!-- <text y="570.73114" x="679" style="font-size:73.75128937px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:2.48031497;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.1248;stroke-opacity:1;font-family:Times New Roman" xml:space="preserve"><tspan style="font-size:72px" y="570.73114" x="679.38892" sodipodi:role="line">base</tspan></text> -->
+	</g>
+</svg>
