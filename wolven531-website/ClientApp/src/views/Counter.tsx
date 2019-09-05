@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
 
 interface ICounterState {
+	buttonEnabled: boolean
 	currentCount: number
-	currentYRotation: number
+	currentRotationY: number
 }
 
 export class Counter extends Component<{}, ICounterState> {
-	rotationInterval: NodeJS.Timeout | null
+	private static MAX_COUNT = 10
+
+	private rotationInterval?: NodeJS.Timeout
 
 	constructor(props: any) {
 		super(props)
 		this.state = {
+			buttonEnabled: true,
 			currentCount: 1,
-			currentYRotation: 0
+			currentRotationY: 0
 		}
-		this.rotationInterval = null
 	}
 
 	public componentDidMount() {
@@ -32,30 +35,40 @@ export class Counter extends Component<{}, ICounterState> {
 				<img
 					src="/pyramid.svg" alt="Pyramid SVG"
 					style={{
-						transform: `rotate3d(0, 1, 0, ${this.state.currentYRotation}deg)`
+						transform: `rotate3d(0, 1, 0, ${this.state.currentRotationY}deg)`
 					}} />
 				<p>Current count: <strong>{this.state.currentCount}</strong></p>
-				<button onClick={this.incrementCounter}>Increment</button>
+				<button
+					disabled={!this.state.buttonEnabled}
+					onClick={this.incrementCounter}>Increment</button>
 			</div>
 		)
 	}
 
 	private addInterval() {
 		this.rotationInterval = setInterval(() => {
-			this.setState(state => ({ currentYRotation: (state.currentYRotation + 1) % 360 }))
+			this.setState(state => ({ currentRotationY: (state.currentRotationY + 1) % 360 }))
 		}, 1000 / 60 / this.state.currentCount)
 	}
 
+	private incrementCounter = () => {
+		if (!this.state.buttonEnabled) {
+			return
+		}
+		this.setState(state => ({
+			buttonEnabled: state.currentCount + 1 < Counter.MAX_COUNT,
+			currentCount: state.currentCount + 1
+		}), () => {
+			this.resetInterval()
+			this.addInterval()
+		})
+	}
+
 	private resetInterval() {
-		if (this.rotationInterval === null) {
+		if (this.rotationInterval === undefined) {
 			return
 		}
 		clearInterval(this.rotationInterval)
-	}
-
-	private incrementCounter = () => {
-		this.setState(state => ({ currentCount: state.currentCount + 1 }))
-		this.resetInterval()
-		this.addInterval()
+		this.rotationInterval = undefined
 	}
 }
