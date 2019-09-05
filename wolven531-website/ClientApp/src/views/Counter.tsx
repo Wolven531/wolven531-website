@@ -11,32 +11,21 @@ export class Counter extends Component<{}, ICounterState> {
 	constructor(props: any) {
 		super(props)
 		this.state = {
-			currentCount: 0,
+			currentCount: 1,
 			currentYRotation: 0
 		}
 		this.rotationInterval = null
 	}
 
 	public componentDidMount() {
-		this.rotationInterval = setInterval(() => {
-			this.setState({ currentYRotation: (this.state.currentYRotation + 1) % 360 })
-		}, 1000 / 60)
+		this.addInterval()
 	}
 
 	public componentWillUnmount() {
-		if (this.rotationInterval === null) {
-			return
-		}
-		clearInterval(this.rotationInterval)
+		this.resetInterval()
 	}
 
-	incrementCounter = () => {
-		this.setState({
-			currentCount: this.state.currentCount + 1
-		})
-	}
-
-	render() {
+	public render() {
 		return (
 			<div>
 				<h1>Counter</h1>
@@ -49,5 +38,26 @@ export class Counter extends Component<{}, ICounterState> {
 				<button onClick={this.incrementCounter}>Increment</button>
 			</div>
 		)
+	}
+
+	private addInterval() {
+		this.rotationInterval = setInterval(() => {
+			this.setState({ currentYRotation: (this.state.currentYRotation + 1) % 360 })
+		}, 1000 / 60 / this.state.currentCount)
+	}
+
+	private resetInterval() {
+		if (this.rotationInterval === null) {
+			return
+		}
+		clearInterval(this.rotationInterval)
+	}
+
+	private incrementCounter = () => {
+		this.setState({
+			currentCount: this.state.currentCount + 1
+		})
+		this.resetInterval()
+		this.addInterval()
 	}
 }
