@@ -42,7 +42,7 @@ export class Counter extends Component<{}, ICounterState> {
 
 	private addInterval() {
 		this.rotationInterval = setInterval(() => {
-			this.setState({ currentYRotation: (this.state.currentYRotation + 1) % 360 })
+			this.setState(state => ({ currentYRotation: (state.currentYRotation + 1) % 360 }))
 		}, 1000 / 60 / this.state.currentCount)
 	}
 
@@ -54,9 +54,7 @@ export class Counter extends Component<{}, ICounterState> {
 	}
 
 	private incrementCounter = () => {
-		this.setState({
-			currentCount: this.state.currentCount + 1
-		})
+		this.setState(state => ({ currentCount: state.currentCount + 1 }))
 		this.resetInterval()
 		this.addInterval()
 	}
