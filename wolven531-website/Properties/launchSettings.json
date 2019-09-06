@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "wolven531-website": {
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "launchBrowser": true
+    }
+  }
+}
