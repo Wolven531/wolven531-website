@@ -23,7 +23,6 @@ export class Counter extends Component<{}, ICounterState> {
 
 	public componentDidMount() {
 		this.loadFromLocal()
-		this.addInterval()
 	}
 
 	public componentWillUnmount() {
@@ -50,13 +49,15 @@ export class Counter extends Component<{}, ICounterState> {
 		)
 	}
 
-	private addInterval() {
+	private addInterval = (count?: number) => {
+		count = count !== undefined ? count : this.state.currentCount
+
 		this.rotationInterval = setInterval(() => {
 			this.setState(state => ({ currentRotationY: (state.currentRotationY + 1) % 360 }))
-		}, 1000 / 60 / this.state.currentCount)
+		}, 1000 / 60 - count)
 	}
 
-	private incrementCounter() {
+	private incrementCounter = () => {
 		if (!this.state.buttonEnabled) {
 			return
 		}
@@ -69,19 +70,26 @@ export class Counter extends Component<{}, ICounterState> {
 		})
 	}
 
-	private loadFromLocal() {
+	private loadFromLocal = () => {
 		if (!window || !window.localStorage) {
+			this.resetInterval()
+			this.addInterval()
 			return
 		}
 		const storageCurrentCount = window.localStorage.getItem(Counter.STORAGE_KEY)
 		if (!storageCurrentCount || storageCurrentCount.length < 1) {
+			this.resetInterval()
+			this.addInterval()
 			return
 		}
 		const currentCount = parseInt(storageCurrentCount, 10)
-		this.setState({ currentCount })
+		const buttonEnabled = currentCount < Counter.MAX_COUNT
+		this.setState({ buttonEnabled, currentCount })
+		this.resetInterval()
+		this.addInterval(currentCount)
 	}
 
-	private resetInterval() {
+	private resetInterval = () => {
 		if (this.rotationInterval === undefined) {
 			return
 		}
@@ -89,7 +97,7 @@ export class Counter extends Component<{}, ICounterState> {
 		this.rotationInterval = undefined
 	}
 
-	private saveToLocal() {
+	private saveToLocal = () => {
 		if (!window || !window.localStorage) {
 			return
 		}
