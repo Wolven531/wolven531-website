@@ -44,6 +44,8 @@ export class Counter extends Component<{}, ICounterState> {
 				<button
 					disabled={!this.state.buttonEnabled}
 					onClick={this.incrementCounter}>Increment</button>
+				<br />
+				<button onClick={this.saveToLocal}>Save (local)</button>
 			</div>
 		)
 	}
