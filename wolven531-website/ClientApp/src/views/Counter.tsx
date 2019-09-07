@@ -8,6 +8,7 @@ interface ICounterState {
 
 export class Counter extends Component<{}, ICounterState> {
 	private static MAX_COUNT = 10
+	private static STORAGE_KEY = 'wolven531-website.counter.currentCount'
 
 	private rotationInterval?: NodeJS.Timeout
 
@@ -27,6 +28,7 @@ export class Counter extends Component<{}, ICounterState> {
 
 	public componentWillUnmount() {
 		this.resetInterval()
+		this.saveToLocal()
 	}
 
 	public render() {
@@ -69,7 +71,7 @@ export class Counter extends Component<{}, ICounterState> {
 		if (!window || !window.localStorage) {
 			return
 		}
-		const storageCurrentCount = window.localStorage.getItem('wolven531-website.counter.currentCount')
+		const storageCurrentCount = window.localStorage.getItem(Counter.STORAGE_KEY)
 		if (!storageCurrentCount || storageCurrentCount.length < 1) {
 			return
 		}
@@ -83,5 +85,12 @@ export class Counter extends Component<{}, ICounterState> {
 		}
 		clearInterval(this.rotationInterval)
 		this.rotationInterval = undefined
+	}
+
+	private saveToLocal() {
+		if (!window || !window.localStorage) {
+			return
+		}
+		window.localStorage.setItem(Counter.STORAGE_KEY, String(this.state.currentCount))
 	}
 }
