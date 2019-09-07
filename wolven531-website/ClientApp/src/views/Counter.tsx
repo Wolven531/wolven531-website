@@ -21,6 +21,7 @@ export class Counter extends Component<{}, ICounterState> {
 	}
 
 	public componentDidMount() {
+		this.loadFromLocal()
 		this.addInterval()
 	}
 
@@ -51,7 +52,7 @@ export class Counter extends Component<{}, ICounterState> {
 		}, 1000 / 60 / this.state.currentCount)
 	}
 
-	private incrementCounter = () => {
+	private incrementCounter() {
 		if (!this.state.buttonEnabled) {
 			return
 		}
@@ -62,6 +63,18 @@ export class Counter extends Component<{}, ICounterState> {
 			this.resetInterval()
 			this.addInterval()
 		})
+	}
+
+	private loadFromLocal() {
+		if (!window || !window.localStorage) {
+			return
+		}
+		const storageCurrentCount = window.localStorage.getItem('wolven531-website.counter.currentCount')
+		if (!storageCurrentCount || storageCurrentCount.length < 1) {
+			return
+		}
+		const currentCount = parseInt(storageCurrentCount, 10)
+		this.setState({ currentCount })
 	}
 
 	private resetInterval() {
