@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './Counter.css'
+
 interface ICounterState {
 	buttonEnabled: boolean
 	currentCount: number
@@ -32,7 +34,7 @@ export class Counter extends Component<{}, ICounterState> {
 
 	public render() {
 		return (
-			<div>
+			<div className="counter">
 				<h1>Counter</h1>
 				<img
 					src="/pyramid.svg" alt="Pyramid SVG"
