@@ -8,7 +8,7 @@ interface ICounterState {
 	currentRotationY: number
 }
 
-export class Counter extends Component<{}, ICounterState> {
+class Counter extends Component<{}, ICounterState> {
 	private static MAX_COUNT = 10
 	private static STORAGE_KEY = 'wolven531-website.counter.currentCount'
 
@@ -106,3 +106,5 @@ export class Counter extends Component<{}, ICounterState> {
 		window.localStorage.setItem(Counter.STORAGE_KEY, String(this.state.currentCount))
 	}
 }
+
+export { Counter }
