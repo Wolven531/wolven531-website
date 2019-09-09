@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { SpinningSVG } from '../components/SpinningSVG/SpinningSVG'
+
 import './Counter.css'
 
 interface ICounterState {
@@ -36,11 +38,11 @@ class Counter extends Component<{}, ICounterState> {
 		return (
 			<div className="counter">
 				<h1>Counter</h1>
-				<img
-					src="/pyramid.svg" alt="Pyramid SVG"
-					style={{
-						transform: `rotate3d(0, 1, 0, ${this.state.currentRotationY}deg)`
-					}} />
+				<SpinningSVG
+					description="Pyramid SVG"
+					rotation={this.state.currentRotationY}
+					sourcePath="/pyramid.svg"
+					/>
 				<p>Current count: <strong>{this.state.currentCount}</strong></p>
 				<button
 					disabled={!this.state.buttonEnabled}
