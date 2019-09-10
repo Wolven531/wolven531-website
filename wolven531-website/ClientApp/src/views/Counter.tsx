@@ -7,21 +7,17 @@ import './Counter.css'
 interface ICounterState {
 	buttonEnabled: boolean
 	currentCount: number
-	currentRotationY: number
 }
 
 class Counter extends Component<{}, ICounterState> {
 	private static MAX_COUNT = 10
 	private static STORAGE_KEY = 'wolven531-website.counter.currentCount'
 
-	private rotationInterval?: NodeJS.Timeout
-
 	constructor(props: any) {
 		super(props)
 		this.state = {
 			buttonEnabled: true,
-			currentCount: 1,
-			currentRotationY: 0
+			currentCount: 1
 		}
 	}
 
@@ -30,7 +26,6 @@ class Counter extends Component<{}, ICounterState> {
 	}
 
 	public componentWillUnmount() {
-		this.resetInterval()
 		this.saveToLocal()
 	}
 
@@ -40,7 +35,7 @@ class Counter extends Component<{}, ICounterState> {
 				<h1>Counter</h1>
 				<SpinningSVG
 					description="Pyramid SVG"
-					rotation={this.state.currentRotationY}
+					intervalDuration={1000 / 60 - this.state.currentCount}
 					sourcePath="/pyramid.svg"
 					/>
 				<p>Current count: <strong>{this.state.currentCount}</strong></p>
@@ -53,14 +48,6 @@ class Counter extends Component<{}, ICounterState> {
 		)
 	}
 
-	private addInterval = (count?: number) => {
-		count = count !== undefined ? count : this.state.currentCount
-
-		this.rotationInterval = setInterval(() => {
-			this.setState(state => ({ currentRotationY: (state.currentRotationY + 1) % 360 }))
-		}, 1000 / 60 - count)
-	}
-
 	private incrementCounter = () => {
 		if (!this.state.buttonEnabled) {
 			return
@@ -68,37 +55,20 @@ class Counter extends Component<{}, ICounterState> {
 		this.setState(state => ({
 			buttonEnabled: state.currentCount + 1 < Counter.MAX_COUNT,
 			currentCount: state.currentCount + 1
-		}), () => {
-			this.resetInterval()
-			this.addInterval()
-		})
+		}))
 	}
 
 	private loadFromLocal = () => {
 		if (!window || !window.localStorage) {
-			this.resetInterval()
-			this.addInterval()
 			return
 		}
 		const storageCurrentCount = window.localStorage.getItem(Counter.STORAGE_KEY)
 		if (!storageCurrentCount || storageCurrentCount.length < 1) {
-			this.resetInterval()
-			this.addInterval()
 			return
 		}
 		const currentCount = parseInt(storageCurrentCount, 10)
 		const buttonEnabled = currentCount < Counter.MAX_COUNT
 		this.setState({ buttonEnabled, currentCount })
-		this.resetInterval()
-		this.addInterval(currentCount)
-	}
-
-	private resetInterval = () => {
-		if (this.rotationInterval === undefined) {
-			return
-		}
-		clearInterval(this.rotationInterval)
-		this.rotationInterval = undefined
 	}
 
 	private saveToLocal = () => {
