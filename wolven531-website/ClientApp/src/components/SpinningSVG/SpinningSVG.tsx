@@ -14,7 +14,7 @@ interface ISpinningSVGState {
 class SpinningSVG extends Component<ISpinningSVGProps, ISpinningSVGState> {
 	private rotationInterval?: NodeJS.Timeout
 
-	constructor(props: any) {
+	constructor(props: ISpinningSVGProps) {
 		super(props)
 		this.state = {
 			currentRotationY: 0
