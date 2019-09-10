@@ -45,8 +45,16 @@ class Counter extends Component<{}, ICounterState> {
 					onClick={this.incrementCounter}>Increment</button>
 				<br />
 				<button onClick={this.saveToLocal}>Save (local)</button>
+				<button onClick={this.clearLocal}>Clear (local)</button>
 			</div>
 		)
+	}
+
+	private clearLocal() {
+		if (!window || !window.localStorage) {
+			return
+		}
+		window.localStorage.removeItem(Counter.STORAGE_KEY)
 	}
 
 	private incrementCounter = () => {
