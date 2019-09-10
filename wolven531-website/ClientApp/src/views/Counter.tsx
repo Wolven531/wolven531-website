@@ -36,6 +36,7 @@ class Counter extends Component<{}, ICounterState> {
 				<SpinningSVG
 					description="Pyramid SVG"
 					intervalDuration={1000 / 60 - this.state.currentCount}
+					rotationalJump={3}
 					sourcePath="/pyramid.svg"
 					/>
 				<p>Current count: <strong>{this.state.currentCount}</strong></p>

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 interface ISpinningSVGProps {
 	description: string
 	intervalDuration: number
+	rotationalJump: number
 	sourcePath: string
 }
 
@@ -52,7 +53,7 @@ class SpinningSVG extends Component<ISpinningSVGProps, ISpinningSVGState> {
 
 	public start = () => {
 		this.rotationInterval = setInterval(() => {
-			this.setState(state => ({ currentRotationY: (state.currentRotationY + 1) % 360 }))
+			this.setState(state => ({ currentRotationY: (state.currentRotationY + this.props.rotationalJump) % 360 }))
 		}, this.props.intervalDuration)
 	}
 }
